@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+div {
+    border: solid 1px black;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#logo-container {
+    display: flex;
+}
+
+#logo-image {
+    width: 20px;
+    height: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 20px;
+}
+
+#cont1-sub1 {
+    display: flex;
+}
+
+#cont1-sub1-sub1 {
+    display: flex;
+    flex-direction: column;
+}
+
+#items {
+    display: flex;
+}
+
+#get-catalog {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#clock {
+    display: grid;
+}
+
+.clock-digit {
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.clock-label {
+    grid-row: 2;
+    display: flex;
+    justify-content: center;
+}
+
+#digit1 {grid-column: 1;}
+#digit2 {grid-column: 2;}
+#digit3 {grid-column: 3;}
+#digit4 {grid-column: 4;}
+#digit5 {grid-column: 5;}
+#digit6 {grid-column: 6;}
+#digit7 {grid-column: 7;}
+#digit8 {grid-column: 8;}
+#label1 {grid-column: 1 / span 2}
+#label2 {grid-column: 3 / span 2}
+#label3 {grid-column: 5 / span 2}
+#label4 {grid-column: 7 / span 2}
+
+#cont2 {
+    display: flex;
+    justify-content: space-evenly;
+    background: rgb(0,255,94);
+    background: linear-gradient(90deg, rgba(0,255,94,1) 0%, rgba(128,234,47,1) 35%, rgba(255,213,0,1) 35%, rgba(255,194,0,1) 65%, rgba(255,167,0,1) 65%);
+}
+
+#cont2 > * {
+    display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 3 контейнер */
+
+.cont3 {
+    width: 100%;
+    display: flex;
+}
+
+.title {
+    font-weight: bold;
+    margin: 2%;
+    font-size: 30pt;
+    text-align: center;
+}
+
+.cont3-subcont {
+    display: flex;
+    gap: 2%;
+    justify-content: center;
+}
+
+.cont3-subsubcont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 15%;
+    color: gray;
+}
+
+.cont3-subsubcont img {
+    height: 120px;
+    width: 120px;
+}
+
+.cont3-subsubcont h6 {
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+
+
+
+/* 4 контейнер */
+
+#cont4-subcont {
+    display: flex;
+    justify-content: space-between;
+}
