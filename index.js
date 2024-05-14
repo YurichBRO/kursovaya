@@ -1,3 +1,5 @@
+// Отсчет времени до конца акции
+// Получение из документа всех элементов с классом "digit"
 const d1 = document.getElementById("digit1");
 const d2 = document.getElementById("digit2");
 const d3 = document.getElementById("digit3");
@@ -6,14 +8,25 @@ const d5 = document.getElementById("digit5");
 const d6 = document.getElementById("digit6");
 const d7 = document.getElementById("digit7");
 const d8 = document.getElementById("digit8");
+// Установка конечной даты акции
 const endTime = new Date(2024, 4, 25, 17, 30, 0);
 
-const t = setInterval(() => {
+function updateCountdown() {
+    /**
+     * Данная функция вызывается каждую секунду для обновления времени до конца
+     * акции. В каждую из ранее полученных элементов записывается
+     * соответствующая цифра.
+     */
     const timeLeft = endTime - Date.now();
-    const seconds = Math.floor(timeLeft / 1000) % 60;
-    const minutes = Math.floor(timeLeft / 1000 / 60) % 60;
-    const hours = Math.floor(timeLeft / 1000 / 60 / 60) % 24;
-    const days = Math.floor(timeLeft / 1000 / 60 / 60 / 24) % 100;
+    const totalSeconds = Math.floor(timeLeft / 1000);
+    const totalMinutes = Math.floor(totalSeconds / 60);
+    const totalHours = Math.floor(totalMinutes / 60);
+    const totalDays = Math.floor(totalHours / 24);
+    const seconds = totalSeconds % 60;
+    const minutes = totalMinutes % 60;
+    const hours = totalHours % 24;
+    const days = totalDays % 100;
+    // Обновление цифр по очереди
     d1.innerText = Math.floor(days / 10);
     d2.innerText = days % 10;
     d3.innerText = Math.floor(hours / 10);
@@ -22,4 +35,78 @@ const t = setInterval(() => {
     d6.innerText = minutes % 10;
     d7.innerText = Math.floor(seconds / 10);
     d8.innerText = seconds % 10;
-}, 1000);
+}
+const countdown = setInterval(updateCountdown, 1000);
+// Конец отсчета времени до конца акции
+
+// Плавная прокрутка до нужного пункта меню
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        // Предотвращаем стандартное поведение браузера в виде перехода по ссылке
+        e.preventDefault();
+        // Прокручиваем страницу до нужного пункта меню
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+// Конец плавной прокрутки до нужного пункта меню
+
+// Скроллинг стрелками по горизонтали
+const leftArrow1 = document.getElementById("cont3-scroll-left");
+const rightArrow1 = document.getElementById("cont3-scroll-right");
+const leftArrow2 = document.getElementById("cont4-scroll-left");
+const rightArrow2 = document.getElementById("cont4-scroll-right");
+
+leftArrow1.addEventListener("click", () => {
+    document.getElementById("cont3-subcont").scrollLeft -= 100;
+});
+rightArrow1.addEventListener("click", () => {
+    document.getElementById("cont3-subcont").scrollLeft += 100;
+});
+leftArrow2.addEventListener("click", () => {
+    document.getElementById("cont4-subcont").scrollLeft -= 100;
+});
+rightArrow2.addEventListener("click", () => {
+    document.getElementById("cont4-subcont").scrollLeft += 100;
+});
+// Конец скроллинга стрелками по горизонтали
+
+// Кнопка "наверх"
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    /**
+     * Функция-обработчик скроллинга страницы.
+     * Отвечает за отображение/скрытие кнопки "наверх"
+     */
+    const scrolledDown = document.body.scrollTop > 20 || document.documentElement.scrollTop > 20;
+    mybutton.style.display = scrolledDown ? "block" : "none";
+}
+function topFunction() {
+    /**
+     * Функция-обработчик нажатия кнопки "наверх".
+     * Отвечает за прокручивание страницы вверх.
+     */
+    window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    });
+}
+
+const mybutton = document.getElementById("up-button");
+mybutton.onclick = topFunction;
+// Конец кнопки "наверх"
+
+// Копирование текста с помощью кнопок
+const contacts = document.querySelectorAll(".contact");
+
+contacts.forEach(contact => {
+    const button = contact.querySelector(".copy-button");
+    button.addEventListener("click", () => {
+        const text = contact.querySelector("p").innerHTML;
+        navigator.clipboard.writeText(text);
+    })
+})
+// Конец копирования текста с помощью кнопок
