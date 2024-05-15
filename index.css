@@ -1,9 +1,24 @@
+@font-face {
+    font-family: 'blogger-sans';
+    src: url('/fonts/blogger_sans.ttf');
+}
+
 * {
     margin: 0;
     padding: 0;
     border: none;
     outline: none;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 20pt;
+}
+
+sup {
+    font-weight: 100;
+    font-size: 10pt;
 }
 
 ::-webkit-scrollbar {
@@ -40,6 +55,7 @@ h1 {
     font-size: 2.5em;
     color: rgb(255, 134, 0);
     margin: 10px 0;
+    font-family: blogger-sans;
 }
 
 h4 {
@@ -47,6 +63,27 @@ h4 {
     font-size: 1.3em;
     color: rgb(116, 105, 93);
     margin: 10px 0;
+    font-family: blogger-sans;
+}
+
+#promo-text > p:first-of-type {
+    margin-bottom: 10px;
+}
+
+.item-title {
+    font-family: blogger-sans;
+}
+
+.description {
+    font-family: blogger-sans;
+}
+
+.get-catalog-title {
+    font-family: blogger-sans;
+}
+
+.discount {
+    font-family: blogger-sans;
 }
 
 #cont1-sub1 {
@@ -60,6 +97,7 @@ h4 {
 #cont1-sub1-sub1 {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 #items {
@@ -75,8 +113,22 @@ h4 {
     align-items: center;
 }
 
-.item-image {
+.item-images {
     height: 200px;
+    width: 250px;
+    display: flex;
+    overflow: hidden;
+    transition: all .5s;
+    position: relative;
+}
+
+.item-image {
+    width: 250px;
+    min-width: 250px;
+    height: 100%;
+    position: absolute;
+    transition: left .5s;
+    pointer-events: none;
 }
 
 #cont2 {
@@ -110,11 +162,14 @@ h4 {
 
 #download-catalog {
     display: flex;
-    background-color: orange;
+    background: rgb(255,136,1);
+    background: linear-gradient(0deg, rgba(255,136,1,1) 0%, rgba(254,191,1,1) 100%);
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%, 20px 50%);
     color: white;
-    padding: 10px 5% 10px 5%;
+    padding: 20px 30px 20px 30px;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    align-items: center;
     gap: 20px;
 }
 
@@ -135,10 +190,12 @@ h4 {
     grid-row: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
     font-size: 2em;
     background-color: white;
     color: black;
     border-radius: 5px;
+    user-select: none;
 }
 
 .clock-label {
@@ -178,6 +235,7 @@ h4 {
     font-weight: bold;
     font-size: 30pt;
     text-align: center;
+    font-family: blogger-sans;
 }
 
 #cont3-title-container, #cont4-title-container {
@@ -190,11 +248,11 @@ h4 {
 }
 
 #cont3-scroll-left, #cont4-scroll-left {
-    background: url("/images/icons/left-arrow.png");
+    background: url(images/icons/left-arrow.png);
 }
 
 #cont3-scroll-right, #cont4-scroll-right {
-    background: url("/images/icons/right-arrow.png");
+    background: url(images/icons/right-arrow.png);
 }
 
 #cont3-title-container > div {
@@ -233,9 +291,12 @@ h4 {
     text-align: center;
     min-width: 200px;
     max-width: 200px;
-    color: gray;
     font-size: .9em;
     padding: 10px;
+}
+
+.cont3-subsubcont p {
+    color: gray;
 }
 
 .cont3-subsubcont img {
@@ -246,6 +307,9 @@ h4 {
 .cont3-subsubcont h6 {
     font-weight: bold;
     text-align: center;
+    font-family: blogger-sans;
+    font-size: 1.5em;
+    margin: 10px;
 }
 
 
@@ -293,12 +357,14 @@ h4 {
     opacity: .08;
     font-weight: bold;
     user-select: none;
-    z-index: -1;
+    z-index: 1;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .step-text {
     color: gray;
     font-size: .9em;
+    z-index: 2;
 }
 
 .arrow {
@@ -324,7 +390,7 @@ h4 {
 #up-button {
     width: 30px;
     height: 30px;
-    background-image: url("/images/icons/up-arrow.png");
+    background-image: url(images/icons/up-arrow.png);
     border-radius: 50%;
     border: 2px solid gray;
     position: fixed;
@@ -367,7 +433,7 @@ iframe {
     border-radius: 50%;
     position: relative;
     z-index: 1;
-    background-image: url("/images/icons/copy.png");
+    background-image: url(images/icons/copy.png);
 }
 /*
 .copy-button:before {
@@ -395,8 +461,16 @@ footer {
     background: linear-gradient(90deg, rgba(148,154,66,1) 0%, rgba(148,154,66,1) 33%, rgba(255,192,0,1) 33%, rgba(255,192,0,1) 67%, rgba(255,134,0,1) 67%);
 }
 
-@media (max-width: 64em) {
+@media (max-width: 68em) {
     #cont1 .form {
         display: none;
+    }
+
+    #download-catalog {
+        clip-path: none;
+    }
+
+    #promo-text {
+        max-width: auto;
     }
 }

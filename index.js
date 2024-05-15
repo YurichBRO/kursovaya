@@ -1,3 +1,29 @@
+// Пролистывание картинок item-image
+const imageContainers = document.querySelectorAll(".item-images");
+
+imageContainers.forEach(im => {
+    const images = im.querySelectorAll(".item-image");
+    im.currentImage = 0;
+    for (let i = 0; i < images.length; i++) {
+        images[i].style.left = `${i*250}px`
+    }
+    im.onmouseenter = function() {
+        this.timer = setInterval(() => {
+            this.currentImage = (this.currentImage + 1) % this.children.length;
+            for (let i = 0; i < images.length; i++) {
+                images[i].style.left = `${i*250-250*this.currentImage}px`
+            }
+        }, 2000);
+    }
+    im.onmouseout = function() {
+        this.currentImage = 0;
+        for (let i = 0; i < images.length; i++) {
+            images[i].style.left = `${i*250}px`
+        }
+        clearInterval(this.timer)
+    }
+});
+
 // Отсчет времени до конца акции
 // Получение из документа всех элементов с классом "digit"
 const d1 = document.getElementById("digit1");

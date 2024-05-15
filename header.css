@@ -45,6 +45,7 @@ header {
     min-width: fit-content;
     border-bottom: 2px dotted #fff;
     text-decoration: none;
+    cursor: pointer;
 }
 
 #header-link:hover {
