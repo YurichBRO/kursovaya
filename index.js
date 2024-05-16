@@ -136,3 +136,11 @@ contacts.forEach(contact => {
     })
 })
 // Конец копирования текста с помощью кнопок
+
+// Анимация стрелок "схемы работы"
+const arrows = document.querySelectorAll(".arrow");
+let currentArrow = 0;
+const cycle = setInterval(() => {
+    arrows[currentArrow].classList.toggle("arrow-active");
+    currentArrow = (currentArrow + 1) % arrows.length;
+}, 250);
