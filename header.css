@@ -28,6 +28,7 @@ header {
     align-items: center;
     gap: 20px;
 }
+
 /*
 #header-div2 > button имеет стилевый класс send-button
 после завершения разметки необходимо переменсти стиль в класс
@@ -53,15 +54,19 @@ header {
     border-bottom: 2px dotted lightgray;
 }
 
-#header-div2 > p {
+#header-phone {
     font-weight: bold;
     min-width: fit-content;
     text-wrap: nowrap;
     color: white;
 }
 
+#header-phone:hover {
+    color: lightgray;
+}
+
 @media (max-width: 40em) {
-    #header-div2 > p {
+    #header-phone {
         display: none;
     }
 }
