@@ -35,7 +35,7 @@ const d6 = document.getElementById("digit6");
 const d7 = document.getElementById("digit7");
 const d8 = document.getElementById("digit8");
 // Установка конечной даты акции
-const endTime = new Date(2024, 4, 25, 17, 30, 0);
+const endTime = new Date(2024, 4, 29, 17, 30, 0);
 
 function updateCountdown() {
     /**
@@ -85,35 +85,47 @@ const leftArrow2 = document.getElementById("cont4-scroll-left");
 const rightArrow2 = document.getElementById("cont4-scroll-right");
 
 leftArrow1.addEventListener("click", () => {
-    document.getElementById("cont3-subcont").scrollLeft -= 100;
+    document.getElementById("cont3-subcont").scrollLeft -= 200;
 });
 rightArrow1.addEventListener("click", () => {
-    document.getElementById("cont3-subcont").scrollLeft += 100;
+    document.getElementById("cont3-subcont").scrollLeft += 200;
 });
 leftArrow2.addEventListener("click", () => {
-    document.getElementById("cont4-subcont").scrollLeft -= 100;
+    document.getElementById("cont4-subcont").scrollLeft -= 200;
 });
 rightArrow2.addEventListener("click", () => {
-    document.getElementById("cont4-subcont").scrollLeft += 100;
+    document.getElementById("cont4-subcont").scrollLeft += 200;
 });
 // Конец скроллинга стрелками по горизонтали
 
-// Кнопка "наверх"
-window.onscroll = function() {scrollFunction()};
+// Кнопка "наверх" и скрытие/показ меню при скролле страницы
+window.onscroll = scrollFunction;
+let oldScroll = 0;
 
+/**
+ * Функция-обработчик скроллинга страницы.
+ * Отвечает за отображение/скрытие кнопки "наверх",
+ * а также скрытие/показ меню при скролле страницы
+ */
 function scrollFunction() {
-    /**
-     * Функция-обработчик скроллинга страницы.
-     * Отвечает за отображение/скрытие кнопки "наверх"
-     */
-    const scrolledDown = document.body.scrollTop > 20 || document.documentElement.scrollTop > 20;
-    mybutton.style.display = scrolledDown ? "block" : "none";
+    const newScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const scrolledDown = newScroll > oldScroll;
+    oldScroll = newScroll;
+    if (scrolledDown) {
+        document.getElementById("menu").style.opacity = "0.1";
+    }
+    else {
+        document.getElementById("menu").style.opacity = "1";
+    }
+
+    const notOnTop = document.body.scrollTop > 20 || document.documentElement.scrollTop > 20;
+    mybutton.style.display = notOnTop ? "block" : "none";
 }
+/**
+ * Функция-обработчик нажатия кнопки "наверх".
+ * Отвечает за прокручивание страницы вверх.
+ */
 function topFunction() {
-    /**
-     * Функция-обработчик нажатия кнопки "наверх".
-     * Отвечает за прокручивание страницы вверх.
-     */
     window.scroll({
         top: 0,
         left: 0,

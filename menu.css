@@ -7,12 +7,13 @@
     right: 0;
     display: flex;
     flex-direction: column;
-    transition: top .5s ease-in-out, height .5s ease-in-out;
+    transition: top .5s ease-in-out, height .5s ease-in-out, opacity 0.25s;
 }
 
 #menu:hover {
     top: 0;
     height: 225px;
+    opacity: 1 !important;
 }
 
 #menu:hover div {
